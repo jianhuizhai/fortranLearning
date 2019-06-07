@@ -18,3 +18,9 @@ by using 4 threads or images, the running time roughly:
  openmp 3.969s
  
 coarray 15.133s
+
+### Comparing the Timing of Whole Array Syntax, Simple Do Loops, Do Concurrent and an OpenMP Solution
+
+* ch3305.f90 (run ./3305 will you find result in detail)
+
+openmp '>' whole array > do concurrent > traditional do loop ('>' means faster)

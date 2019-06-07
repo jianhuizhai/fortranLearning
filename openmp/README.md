@@ -23,4 +23,4 @@ coarray 15.133s
 
 * ch3305.f90 (run ./3305 will you find result in detail)
 
-  openmp > whole array > do concurrent > traditional do loop ('>' means faster)
+ openmp > whole array > do concurrent > traditional do loop ('>' means faster)

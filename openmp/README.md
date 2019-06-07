@@ -16,4 +16,5 @@ https://gcc.gnu.org/onlinedocs/libgomp/
 by using 4 threads or images, the running time roughly:
 
  openmp 3.969s
+ 
 coarray 15.133s

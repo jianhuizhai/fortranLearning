@@ -13,11 +13,11 @@ https://gcc.gnu.org/onlinedocs/libgomp/
 
 * ch3403.f90 calculates pi by using coarray
 
-by using 4 threads or images, the running time roughly:
+  by using 4 threads or images, the running time roughly:
 
- openmp 3.969s
+  openmp  3.969s
  
-coarray 15.133s
+  coarray 15.133s
 
 ### Comparing the Timing of Whole Array Syntax, Simple Do Loops, Do Concurrent and an OpenMP Solution
 

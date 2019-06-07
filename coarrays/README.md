@@ -10,4 +10,6 @@ you need to install libcoarrays-dev in linux.
 
 ## run
 
-* cafrun -np 4 ./3401
+* cafrun -np 4 ./3401 (in parallel)
+
+* ./3401 (not in paralel)

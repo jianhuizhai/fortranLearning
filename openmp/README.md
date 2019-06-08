@@ -18,13 +18,13 @@ https://gcc.gnu.org/onlinedocs/libgomp/
   by using 4 threads or images, the running time roughly :
   
 ```
-  paralle  time(compile) time(compile)
+  parallel  time(compile) time(compile)
   
   openmp  3.969s(-O0)   0.359(-O3)
   
-  mpi     3.977s(-O0)  0.367(-O3)
+  mpi     3.977s(-O0)   0.367(-O3)
  
-  coarray 13.133s(-O0) 0.367s(-O3)
+  coarray 13.133s(-O0)  0.367s(-O3)
 ```
 ### Comparing the Timing of Whole Array Syntax, Simple Do Loops, Do Concurrent and an OpenMP Solution
 

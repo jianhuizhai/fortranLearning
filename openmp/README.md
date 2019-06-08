@@ -20,9 +20,9 @@ https://gcc.gnu.org/onlinedocs/libgomp/
 ```
   parallel  time(compile) time(compile)
   
-  openmp  3.969s(-O0)   0.359(-O3)
+  openmp  3.969s(-O0)   0.359s(-O3)
   
-  mpi     3.977s(-O0)   0.367(-O3)
+  mpi     3.977s(-O0)   0.367s(-O3)
  
   coarray 13.133s(-O0)  0.367s(-O3)
 ```

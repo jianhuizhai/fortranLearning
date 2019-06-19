@@ -7,3 +7,7 @@
 ## Useful knowledges
 
 * continuation mark is the ampersand (&) character
+```
+ x =  1       &
+      + 2
+```

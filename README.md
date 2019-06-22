@@ -6,6 +6,8 @@
 
 ## Useful knowledges
 
+* wp => dp is called a rename-list in fortran terminology
+
 * continuation mark is the ampersand (&) character
 ```
  x =  1       &

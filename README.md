@@ -27,4 +27,5 @@ to reshape a rank-one array constant.
 ## expressions and assignments
 ```
 2**(-3) is zero
+given a variable a of kind long, the result of a/1.7 will be less precise than that of a/1.7_long.
 ```

@@ -30,3 +30,19 @@ to reshape a rank-one array constant.
 given a variable a of kind long, the result of a/1.7 will be less precise than that of a/1.7_long.
 ```
 * an object of a derived data type is defined only when each of its non-pointer components is defined.
+
+## Relative precedence of operators (in decreasing order).
+```
+——             monadic (unary) defined operator
+Numeric                   **
+Numeric                 * or /
+Numeric              monadic + or -
+Numeric               dyadic + or -
+Character                 //
+Relational          == /= < <= > >=
+Logical                 .not.
+Logical                 .and.
+Logical                 .or.
+Logical             .eqv. or .neqv.
+——              dyadic (bonary) defined operator
+```

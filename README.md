@@ -24,3 +24,7 @@ a(ipoint)  !ipoint is rank-one intger array
 an array constant of rank greater than one may be constructed by using the function reshape 
 to reshape a rank-one array constant.
 ```
+## expressions and assignments
+```
+2**(-3) is zero
+```

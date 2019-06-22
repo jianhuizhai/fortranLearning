@@ -29,3 +29,4 @@ to reshape a rank-one array constant.
 2**(-3) is zero
 given a variable a of kind long, the result of a/1.7 will be less precise than that of a/1.7_long.
 ```
+* an object of a derived data type is defined only when each of its non-pointer components is defined.

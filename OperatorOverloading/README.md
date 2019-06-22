@@ -2,4 +2,4 @@
 
 * define derived date type
 
-* define operator (functions) and interface block
+* define operator : interface block and functions

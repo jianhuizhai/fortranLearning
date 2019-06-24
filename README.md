@@ -48,3 +48,24 @@ Logical                 .or.
 Logical             .eqv. or .neqv.
 ——              dyadic (bonary) defined operator
 ```
+## Control constructs
+
+### The if construct
+```
+[name:] if (scalar-logical-expr) then
+             block
+        [else if (scalar-logical-expr) then ] [name]
+             block ]
+        [else [name]
+             block
+        end if [name]
+        
+if (scalar-logical-expr) action-stmt (for only one if case)
+```
+### The case construct
+```
+[name:] select case (expr)
+        [ case selector [name]
+            block ]
+        end selection [name]
+```

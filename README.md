@@ -90,3 +90,14 @@ exit [name]
 cycle [name]
 ```
 which transfers control to the ```end do``` statement of the corresponding construct.
+
+Finally, it should be note that many short ```do```loops can be expressed alternatively in the form of array expressions and assignments. However, this is not always possible, and a particuler danger to watch for is where one iteration of the loop dependes upon a previous one. For example
+```
+do i = 2, n
+    a(i) = a(i-1) + b(i)
+end do
+```
+cannot be replaced by the statement
+```
+a(2:n) = a(1:n-1) + b(2:n)
+```

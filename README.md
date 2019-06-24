@@ -69,3 +69,24 @@ if (scalar-logical-expr) action-stmt (for only one if case)
             block ]
         end selection [name]
 ```
+### The do construct
+```
+[name : ] do variable = expr1, expr2 [, expr3]
+               block
+          end do [name]
+ '''
+ expr3 must be non zero when present
+ 
+ A very simple form of the do statement is the unbonded 
+ '''
+ [ name : ] do
+```
+which specifies an endless loop. In practice, a means to exit from an endless loop is required, and this is provided in the form of the exit statement:
+```
+exit [name]
+```
+```cycle``` statement
+```
+cycle [name]
+```
+which transfers control to the ```end do`` statement of the corresponding construct.

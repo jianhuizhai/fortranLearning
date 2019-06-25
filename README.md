@@ -181,4 +181,6 @@ A dummy argument is permitted to have the attribute ```pointer```. In this case,
 an actual argument is associated with a dummy argument the following statements hold:
 * Action that affects the allocation status or pointer association status of the argument or any part of it (any pointer assignment, allocation, deallocation, or nullification) must be taken through the dummy argument. If this is done, then throughout the execution of the procedure, the argument may be referenced only through the dummy argument.
 * Action that affects the value of the argument or any part of it must be taken through the dummy argument unless
-    * the dummy argument has the pointer attribute;
+    * the dummy argument has the ```pointer``` attribute;
+    * the part is all or part of a ```pointer``` subobject; or
+    * the dummy argument has the target attribute, the dummy argument does not have intent in (Section 5.9), the dummy argument is scalar or an assumed-shape array (Section 5.7.1), and the actual argument is a target other than an array section with a vector subscript.

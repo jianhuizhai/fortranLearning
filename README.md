@@ -101,3 +101,68 @@ __cannot__ be replaced by the statement
 ```
 a(2:n) = a(1:n-1) + b(2:n)
 ```
+
+＃＃　Program units and procedures
+
+### 5.1 Introduction
+
+function and subroutine are known collectively as __procedures__. a __module subprogram__ and it defines a __module procedure__. A subprogram may be placed inside a module subprogram and it defines a __module procedure__. A subprogram may be placed inside a module subprogram, an external subprogram, or a main program, in which case we call it an __internal subprogram__ and it defines an __internal procedure__. If a program unit or subprogram contains a subprogram, it is called the __host__ of that subprogram.
+
+### 5.2 Main program
+
+```
+[ program  program-name]
+    [ specification-stmts ]
+     [ executable-stmts ]
+[ contains 
+    [ internal-subprogram ] ... ]
+end [ program [ program-name] ]
+```
+### 5.3 The stop statement
+
+Another way to stop program execution is to execute a ```stop``` statement.
+```
+stop 
+stop 12345
+stop -2**20
+stop ’Incomplete data. Program terminated.’
+stop ’load_data_type_1’//’: value out of range’
+```
+There is also an ```error stop``` statement (Section 17.14) that can be used for program termination. The main difference between the ```stop``` and ```error stop``` statements is that the latter causes __error termination__ instead of normal termination.
+
+Other differences between normal and error termination are:
+
+* normal termination properly closes all files, waiting for any input/output operation in progress to complete, but error termination has no such requirement (this could cause data loss if files are still being written);
+
+* in a coarray program with multiple images (Chapter 17), the entire computation is terminated, not just a single image (Section 17.14).
+
+### 5.4 External subprograms
+
+External subprograms are called from a main program or elsewhere, usually to perform a well-defined task within the framework of a complete program.
+```
+    subroutine-stmt  
+        [ specification-stmts ]
+        [ executable-stmts ]
+    [ contains
+        [ internal-subprogram ] . . . ]
+    end [ subroutine [ subroutine-name ] ]
+or 
+    function-stmt
+        [ specification-stmts ]
+        [ executable-stmts ]
+    [ contains
+        [ internal-subprogram ] . . . ]
+    end [ function [ function-name ] ]
+```
+### 5.5 Modules
+
+The third type of program unit, the module, provides a means of packaging global data, derived types and their associated operations, subprograms, interface blocks (Section 5.11), and namelist groups (Section 8.20).
+
+The module has the form
+```
+module modumodule-name
+    [ specification-stmts ]
+[ contains
+    [ module-subprogram ] . . . ]
+end [ module [ module-name ] ]
+```

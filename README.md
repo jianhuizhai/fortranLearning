@@ -265,7 +265,7 @@ contains
     subroutine apply(fun,...)
         interface
             function fun(f)
-                __import :: t, wp__
+                import :: t, wp  !!! important
                 type(t) :: fun
                 real(wp) :: f
             end function fun
@@ -273,3 +273,15 @@ contains
     end subroutine apply
 end module m
 ```
+the interface body would be invalid without the ```import``` statement, because it would have no means of accessing either type ```t``` or the constant ```wp```.
+
+The statement must be placed after any use statements but ahead of any other statements of the body. It has the general form
+```
+import [ [::] import-name-list ]
+```
+where each import-name is that of an entity that is accessible in the containing scoping unit.
+
+An import statement without a list imports all entities from the containing scoping unit that are not declared to be local entities of the interface body; this works the same way as normal host association.
+### Procedures as arguments
+See section 5.12
+### Keyword and optional arguments

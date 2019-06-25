@@ -181,4 +181,4 @@ A dummy argument is permitted to have the attribute ```pointer```. In this case,
 an actual argument is associated with a dummy argument the following statements hold:
 * Action that affects the allocation status or pointer association status of the argument or any part of it (any pointer assignment, allocation, deallocation, or nullification) must be taken through the dummy argument. If this is done, then throughout the execution of the procedure, the argument may be referenced only through the dummy argument.
 * Action that affects the value of the argument or any part of it must be taken through the dummy argument unless
- * the dummy argument has the pointer attribute;
+    * the dummy argument has the pointer attribute;

@@ -183,4 +183,4 @@ an actual argument is associated with a dummy argument the following statements 
 * Action that affects the value of the argument or any part of it must be taken through the dummy argument unless
     * the dummy argument has the ```pointer``` attribute;
     * the part is all or part of a ```pointer``` subobject; or
-    * the dummy argument has the target attribute, the dummy argument does not have intent in (Section 5.9), the dummy argument is scalar or an assumed-shape array (Section 5.7.1), and the actual argument is a target other than an array section with a vector subscript.
+    * the dummy argument has the ```target``` attribute, the dummy argument does not have intent ```in``` (Section 5.9), the dummy argument is scalar or an assumed-shape array (Section 5.7.1), and the actual argument is a target other than an array section with a vector subscript.

@@ -166,3 +166,19 @@ module modumodule-name
     [ module-subprogram ] . . . ]
 end [ module [ module-name ] ]
 ```
+### Arguments of procedures
+#### assumed shape arrays
+However, it is possible to require that the shape of the dummy array be taken automatically to be that of the corresponding actual array argument. Such an array is said to be an __assumed-shape array__. When the shape is declared by the dimension clause, each dimension has the form
+```
+[lower-bound] : 
+```
+where ```lower-bound``` is an integer expression that may depend on module data or the other arguments (see Section 8.18 for the exact rules). If ```lower-bound``` is omitted, the default value is one.
+
+### pointer arguments
+A dummy argument is permitted to have the attribute ```pointer```. In this case, the actual argument must also have the attribute ```pointer```.
+
+### restrictions on actual arguments
+an actual argument is associated with a dummy argument the following statements hold:
+* Action that affects the allocation status or pointer association status of the argument or any part of it (any pointer assignment, allocation, deallocation, or nullification) must be taken through the dummy argument. If this is done, then throughout the execution of the procedure, the argument may be referenced only through the dummy argument.
+* Action that affects the value of the argument or any part of it must be taken through the dummy argument unless
+- the dummy argument has the pointer attribute;

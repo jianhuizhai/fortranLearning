@@ -285,3 +285,7 @@ An import statement without a list imports all entities from the containing scop
 ### Procedures as arguments
 See section 5.12
 ### Keyword and optional arguments
+see section 5.13
+
+### Overloading and generic interfaces
+See section 5.18

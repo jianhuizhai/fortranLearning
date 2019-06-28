@@ -102,7 +102,7 @@ __cannot__ be replaced by the statement
 a(2:n) = a(1:n-1) + b(2:n)
 ```
 
-＃＃　Program units and procedures
+## Program units and procedures
 
 ### 5.1 Introduction
 

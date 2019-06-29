@@ -149,5 +149,85 @@ call move_alloc(temp, a)
 ! a now has shape (/ n, m /), and temp is unallocated
 ```
 This sequence only requires one copying operation instead of the two that would have been
-required without ```move_alloc```. Because the copy is controlled by the user, pre-existing values will end up where the user wants them (which might be at the same subscripts, or all at the
-beginning, or all at the end, etc.).
+required without ```move_alloc```. Because the copy is controlled by the user, pre-existing values will end up where the user wants them (which might be at the same subscripts, or all at the beginning, or all at the end, etc.).
+## Allocatable dummy arguments
+A dummy argument is permitted to have the allocatable attribute. In this case, the corresponding actual argument must be allocatable and of the same type, kind parameters, and rank; also, the interface must be explicit.
+```
+subroutine load(array, unit)
+real, allocatable, intent(out), dimension(:, :, :) :: array
+integer, intent(in)
+:: unit
+integer
+:: n1, n2, n3
+read *, n1, n2, n3
+allocate (array(n1, n2, n3))
+read *, array
+end subroutine load
+```
+## Allocatable functions
+A function result is permitted to have the allocatable attribute, which is very useful when the
+size of the result depends on a calculation in the function itself, for example
+```
+program no_leak
+real, dimension(100) :: x, y
+.
+.
+.
+y(:size(compact(x))) = compact(x)**2
+.
+.
+.
+contains
+function compact(x) ! To remove duplicates from the array x
+real, allocatable, dimension(:) :: compact
+real, dimension(:), intent(in) :: x
+integer
+:: n
+.
+.
+.
+! Find the number of distinct values, n
+allocate (compact(n))
+.
+.
+.
+! Copy the distinct values into compact
+end function compact
+end program no_leak
+```
+The interface must be explicit in any scoping unit in which the function is referenced. The
+result is automatically deallocated after execution of the statement in which the reference
+occurs, even if it has the ```target``` attribute.
+
+## 6.11 Allocatable components
+see section 6.11 
+
+Components of a derived type are permitted to have the allocatable attribute. For example, a lower-triangular matrix may be held by using an allocatable array for each row. Consider the type
+```
+type row
+    real, dimension(:), allocatable :: r
+end type row
+```
+and the arrays
+```
+type(row), dimension(n) :: s, t   ! n of type integer
+```
+Storage for the rows can be allocated thus
+```
+do i = 1, n   ! i of type integer
+    allocate (t(i)%r(1:i)) ! Allocate row i of length i
+end do
+```
+The array assignment
+```
+s = t
+```
+would then be equivalent to the assignments
+```
+s(i)%r = t(i)%r
+```
+for all the components.
+
+For an object of a derived type that has a component of derived type, we need the concept of an ultimate allocatable component, which is an ultimate component (Section 2.13) that is allocatable.
+## 6.12 Allocatable arrays vs. pointers
+see section 6.12

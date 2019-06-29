@@ -116,8 +116,38 @@ quotation = "This ain’t the summer of love."
 In each of the assignments to ```quotation```, it is reallocated to be the right length (unless it is already of that length) to hold the desired quotation. If instead the normal truncation or
 padding is required in an assignment to an allocatable-length character, substring notation
 can be used to suppress the automatic reallocation. For example,
+
 ```quotation(:) = ’’```
+
 leaves ```quotation``` at its current length, setting all of it to blanks.
 
 Automatic reallocation only occurs for normal intrinsic assignment, and not for defined
 assignment or for where constructs (Section 7.6).
+## Transfering an allocation
+The intrinsic subroutine ```move_alloc``` allows an allocation to be moved from one allocatable
+object to another. It provides what is essentially the allocatable equivalent of pointer assignment: allocation transfer. However, unlike pointer assignment, this maintains the allocatable semantics of having at most one allocated object for each allocatable variable. For example,
+
+```
+real, allocatable :: a1(:), a2(:)
+allocate (a1(0:10))
+a1(3) = 37
+call move_alloc(from=a1, to=a2)
+! a1 is now unallocated,
+! a2 is allocated with bounds (0:10) and a2(3)==37.
+```
+The subroutine move_alloc can be used to minimize the amount of copying required when
+one wishes to expand or contract an allocatable array; the canonical sequence for this is:
+```
+real, allocatable :: a(:,:), temp(:,:)
+.
+.
+.
+! Increase size of a to (n, m)
+allocate (temp(n, m))
+temp(1:size(a,1), 1:size(a,2)) = a
+call move_alloc(temp, a)
+! a now has shape (/ n, m /), and temp is unallocated
+```
+This sequence only requires one copying operation instead of the two that would have been
+required without ```move_alloc```. Because the copy is controlled by the user, pre-existing values will end up where the user wants them (which might be at the same subscripts, or all at the
+beginning, or all at the end, etc.).

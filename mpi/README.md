@@ -29,3 +29,14 @@ http://www.open-mpi.org/
 ```MPI_Recv```        Receive a message
 
 ```MPI_Finalize```    Terminate MPI
+## The following shows the mapping between MPI data types and Fortran data types.
+```
+    mpi datatype            fortran datatype
+    
+     mpi_integer                integer
+     mpi_real                   real
+mpi_double_precision            double precision
+     mpi_complex                complex
+     mpi_logical                logical
+     mpi_character              character
+```

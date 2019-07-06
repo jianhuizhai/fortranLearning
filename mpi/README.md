@@ -1,4 +1,6 @@
 # mpi
+fortran 2008 syntax
+use mpi_f08
 
 ## resources
 
